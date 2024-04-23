@@ -1,0 +1,83 @@
+name: newsai
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+
+  # UI
+  font_awesome_flutter: ^10.7.0
+  cached_network_image: ^3.3.1
+  responsive_sizer: ^3.3.1
+  google_fonts: ^6.2.1
+  flutter_rating_bar: ^4.0.1
+  email_validator: ^2.1.17
+  flutter_otp_text_field: ^1.1.2+1
+  readmore: ^3.0.0
+
+  #Logic
+  flutter_bloc: ^8.1.5
+  get: ^4.6.6
+  getbloc: ^1.2.0
+  intl: ^0.19.0
+  get_storage: ^2.1.1
+  url_launcher: ^6.2.5
+
+  #Http
+  dio: ^5.4.1
+  http: ^1.2.1
+  dartz: ^0.10.1
+
+  #NETWORK
+  network_info_plus: ^5.0.2
+  wakelock_plus: 1.1.4
+  win32: ^5.3.0
+  permission_handler: ^11.3.0
+  wifi_iot: ^0.3.19
+  internet_connection_checker: ^1.0.0+1
+  flutter_vlc_player: ^7.4.1
+
+  # UX
+  shimmer: ^3.0.0
+  flutter_staggered_animations: ^1.1.1
+  flutter_native_splash: ^2.4.0
+
+  # Sliders
+  introduction_slider: ^2.0.1
+  carousel_slider: ^4.2.1
+  flutter_onboarding_slider: ^1.0.11
+
+  # FIREBASE MESSAGING
+  firebase_core: ^2.27.1
+  firebase_auth: ^4.17.9
+  cloud_firestore: ^4.15.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/Cairo-Bold.ttf
+          weight: 700
