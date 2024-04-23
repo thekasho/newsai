@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../config/config.dart';
 import '../../../core/constants/colors.dart';
-import '../ui/settings_tab.dart';
 
-class MainSearchInput extends StatelessWidget {
-  const MainSearchInput({super.key});
+class SearchPageInput extends StatelessWidget {
+  const SearchPageInput({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80.w,
+      alignment: Alignment.center,
+      width: 100.w,
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 10.0),
       child: ListView(
         children: [
@@ -25,14 +22,16 @@ class MainSearchInput extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     onTap: () async {
-                      Get.toNamed(screenSearch);
+
                     },
-                    showCursor: true,
-                    readOnly: true,
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                    ),
+
                     decoration: InputDecoration(
                       prefixIcon: IconButton(
                         onPressed: (){
-                          Get.toNamed(screenSearch);
+
                         },
                         icon: const Icon(
                           FontAwesomeIcons.magnifyingGlass,
@@ -49,7 +48,7 @@ class MainSearchInput extends StatelessWidget {
                       fillColor: Colors.grey[350],
                       contentPadding: EdgeInsets.symmetric(
                         horizontal: 5.w,
-                        vertical: 1.5.h,
+                        vertical: 2.h,
                       ),
                     ),
                   ),

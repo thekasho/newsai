@@ -13,6 +13,8 @@ abstract class NewsCont extends GetxController {
   checkNetwork();
   getNews();
   getCategories();
+  likePost(int id);
+  addView(int id);
 }
 class NewsContImp extends NewsCont {
   Requests requests = Requests(Get.find());
@@ -122,6 +124,103 @@ class NewsContImp extends NewsCont {
       requestStatus = RequestStatus.success;
       update();
 
+    } catch (e) {
+      print("Error $e");
+    }
+  }
+
+  @override
+  likePost(id) async {
+    try {
+      if(id >= 1){
+        if(!isConnected){
+          Get.defaultDialog(
+            backgroundColor: white,
+            title: "Error",
+            titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+            titleStyle: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+                color: red,
+                fontWeight: FontWeight.bold
+            ),
+            content: Text(
+              "No Internet Connection !!",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+              ),
+            ),
+          );
+          requestStatus = RequestStatus.failure;
+          update();
+          return;
+        }
+        Map likeRequest = {
+          'user_id': userid.toString(),
+          'post_id': id.toString(),
+        };
+        var likeRes = await requests.postData(likeRequest, AppLinks.likePost);
+        if(likeRes['status'] == "success"){
+          Get.defaultDialog(
+            backgroundColor: white,
+            title: "Success",
+            titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+            titleStyle: TextStyle(
+              fontSize: 18.sp,
+              fontFamily: "Cairo",
+              color: green,
+              fontWeight: FontWeight.bold,
+            ),
+            content: Text(
+              "Saved Success..",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+              ),
+            ),
+          );
+          update();
+        }
+      }
+    } catch (e) {
+      print("Error $e");
+    }
+  }
+
+  @override
+  addView(id) async {
+    try {
+      if(id >= 1){
+        if(!isConnected){
+          Get.defaultDialog(
+            backgroundColor: white,
+            title: "Error",
+            titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+            titleStyle: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+                color: red,
+                fontWeight: FontWeight.bold
+            ),
+            content: Text(
+              "No Internet Connection !!",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+              ),
+            ),
+          );
+          requestStatus = RequestStatus.failure;
+          update();
+          return;
+        }
+        Map viewRequest = {
+          'user_id': userid.toString(),
+          'post_id': id.toString(),
+        };
+        await requests.postData(viewRequest, AppLinks.viewPost);
+      }
     } catch (e) {
       print("Error $e");
     }

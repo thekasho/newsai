@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:newsai/features/news/ui/single_post.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../core/class/request_status.dart';
 import '../../../core/constants/colors.dart';
 import '../../home/widget/category_title.dart';
-import '../../home/widget/home_title.dart';
 import '../../home/widget/one_banner_post.dart';
 import '../controllers/news_by_category.dart';
 
@@ -89,7 +88,7 @@ class _NewsByCategoryScreenState extends State<NewsByCategoryScreen> {
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () async {
-                              print(cont.allNews[index]['id']);
+                              Get.to(()=>SinglePostScreen(id: cont.allNews[index]['id']));
                             },
                             child: Container(
                               width: 95.w,
@@ -106,7 +105,7 @@ class _NewsByCategoryScreenState extends State<NewsByCategoryScreen> {
                                   ),
                                   GestureDetector(
                                     onTap: () async {
-                                      cont.likeUnit(cont.allNews[index]['id']);
+                                      cont.likePost(cont.allNews[index]['id']);
 
                                       if(cont.allNews[index]['is_liked'] == 1){
                                         cont.allNews[index]['is_liked'] = 0;
@@ -142,7 +141,7 @@ class _NewsByCategoryScreenState extends State<NewsByCategoryScreen> {
                                         ],
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),

@@ -99,6 +99,7 @@ class OneBannerPost extends StatelessWidget {
                           color: white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Cairo'
                         ),
                       ),
                     ),

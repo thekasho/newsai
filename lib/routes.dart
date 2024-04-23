@@ -6,6 +6,8 @@ import 'features/auth/ui/login.dart';
 import 'features/home/ui/home.dart';
 import 'features/landing/ui/home.dart';
 import 'features/news/ui/by_category.dart';
+import 'features/news/ui/popular.dart';
+import 'features/search/ui/search.dart';
 
 List<GetPage<dynamic>>? routes = [
   // home & landing
@@ -14,4 +16,8 @@ List<GetPage<dynamic>>? routes = [
   // auth
   GetPage(name: screenRegister, page: () => const RegisterScreen()),
   GetPage(name: screenLogin, page: () => const LoginScreen()),
+  // search
+  GetPage(name: screenSearch, page: () => const SearchScreen()),
+  // news
+  GetPage(name: screenPopularNew, page: () => const PopularNewsScreen()),
 ];

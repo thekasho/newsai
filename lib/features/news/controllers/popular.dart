@@ -9,18 +9,17 @@ import '../../../core/constants/colors.dart';
 import '../../../core/remote/requests.dart';
 import '../../../core/repo/local/local.dart';
 
-abstract class NewsByCategoryCont extends GetxController {
+abstract class PopularNewsCont extends GetxController {
   checkNetwork();
-  getNews(int id);
+  getNews();
   likePost(int id);
 }
-class NewsByCategoryContImp extends NewsByCategoryCont {
+class PopularNewsContImp extends PopularNewsCont {
   Requests requests = Requests(Get.find());
   RequestStatus requestStatus = RequestStatus.loading;
   bool isConnected = false;
   List allNews = [];
   int userid = 0;
-  String catName = '';
 
   @override
   checkNetwork() async {
@@ -87,7 +86,7 @@ class NewsByCategoryContImp extends NewsByCategoryCont {
   }
 
   @override
-  getNews(id) async {
+  getNews() async {
     requestStatus = RequestStatus.loading;
     update();
 
@@ -121,14 +120,12 @@ class NewsByCategoryContImp extends NewsByCategoryCont {
 
     Map newsData = {
       'user_id': userid.toString(),
-      'category_id': id.toString(),
     };
-    var getNews = await requests.postData(newsData, AppLinks.newsBycategory);
+    var getNews = await requests.postData(newsData, AppLinks.popularNews);
 
     if(getNews['status'] == "success" && getNews['result'].length >= 1){
       allNews = [];
       allNews.addAll(getNews['result']);
-      catName = allNews[0]['category_title'];
     }
     requestStatus = RequestStatus.success;
     update();
@@ -139,6 +136,8 @@ class NewsByCategoryContImp extends NewsByCategoryCont {
     super.onReady();
     requestStatus = RequestStatus.loading;
     await checkNetwork();
+    await getNews();
     update();
   }
+
 }
